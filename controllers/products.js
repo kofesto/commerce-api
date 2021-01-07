@@ -23,7 +23,7 @@ exports.get_product = (req,res,next)=>{
         if(item){
             res.status(200).json(item);
         }else{
-            res.status(404).json({message:"No valid entry found for provided product ID"});
+            res.status(404).json({message:"No valid entry found for provided product id"});
         }
     })
     .catch(err =>{
