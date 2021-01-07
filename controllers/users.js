@@ -30,7 +30,7 @@ exports.register_user = (req,res,next)=>{
                     });
                     user.save()
                     .then(result=>{
-                        console.log(result);
+                        //console.log(result);
                         res.status(201).json({
                             message:"user created"
                         });
@@ -65,7 +65,7 @@ exports.login_user = (req,res,next)=>{
                                 },
                                 process.env.JWT_KEY,
                                 {
-                                    expireIn:"1h"
+                                    expiresIn:"1h"
                                 }
                                 );
                 res.status(200).json({

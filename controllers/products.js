@@ -5,7 +5,7 @@ exports.get_all_products = (req,res,next)=>{
     Product.find()
     .exec()
     .then(data=>{
-        console.log(data);
+        //console.log(data);
         res.status(200).json(data);
     })
     .catch(err =>{
@@ -36,12 +36,13 @@ exports.create_product = (req,res,next)=>{
     const product = new Product({
         _id : new mongoose.Types.ObjectId(),
         productName : req.body.productName,
-        price : req.body.price
+        price : req.body.price,
+        description : req.body.description
     });
     product.save().then(result =>{
         //console.log(result);
         res.status(201).json({
-            message:"product created",
+            message:"product created", 
             createdProduct : result
         });
     }).catch(err=>{
@@ -64,6 +65,7 @@ exports.delete_product =(req,res,next)=>{
 };
 
 exports.update_product = (req,res,next)=>{
+    /*
     id = req.params.productId;
     const updateOps ={};
     for(const ops of req.body){
@@ -80,4 +82,22 @@ exports.update_product = (req,res,next)=>{
         //console.log(err);
         res.status(500).json({error:err});
     });
+    */
+    const {id:_id} = req.params;
+    const products = req.body;
+
+    if(!mongoose.Types.ObjectId.isValid(_id)){
+        return res.status(404).json({message:"product does not exist"});
+    }else{
+        Product.findByIdAndUpdate(_id,products,{new:true })
+        .then(result =>{
+            //console.log(result)
+            res.status(200).json({upDatedProducts : result});
+        })
+        .catch(err=>{
+            console.log(err);
+            res.status(500).json({error:err});
+        });
+        //res.status(200).json(upDatedProducts);
+    }
 };

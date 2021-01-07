@@ -11,12 +11,12 @@ router.get('/',productsController.get_all_products);
 router.get('/:productId',productsController.get_product);
 
 //Create product
-router.post('/',productsController.create_product);
+router.post('/',checkAuth, productsController.create_product);
 
 //Delete Product
-router.delete('/:productId',productsController.delete_product);
+router.delete('/:productId',checkAuth, productsController.delete_product);
 
 //Updating product 
-router.patch('/:productId',productsController.update_product);
+router.patch('/:id',checkAuth, productsController.update_product);
 
 module.exports = router;
