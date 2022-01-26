@@ -3,7 +3,7 @@
 This app is a simple ecommerce platform developed in Nodejs with JWT, user's registration and login
 ```
 # Creating a RESTful API with Node.js
-RESTful API with Node.js: [https://github.com/kofesto/commerce.git](https://github.com/kofesto/ecommerce.git)
+RESTful API with Node.js: [https://github.com/kofesto/commerce-api.git](https://github.com/kofesto/commerce-api.git)
 
 ## Usage
 Check out the branch you're interested in ```git clone``` it and thereafter run ```npm install```.
